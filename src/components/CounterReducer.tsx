@@ -10,14 +10,10 @@ const initialState = {
 }
 
 // hay que definir todas las acciones que el reducer vaya a poder usar. Puede ser con "type" o con "interface"
-type ContadorActions =
-    {
-        type: 'incrementar'
-    } | { // el operador | es ó en typescript
-        type: 'decrementar'
-    } | {
-        type: 'custom', payload: number
-    }
+type ContadorActions = // el operador | es ó en typescript
+    | { type: 'incrementar' }
+    | { type: 'decrementar' }
+    | { type: 'custom', payload: number }
 
 
 // esta es la función reducer
