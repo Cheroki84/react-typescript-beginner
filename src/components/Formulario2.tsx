@@ -1,29 +1,11 @@
-import { ChangeEvent, useState } from "react";
+import { useForm } from "../hooks/useForm";
 
-export const Formulario = () => {
+export const Formulario2 = () => {
 
-    const [formulario, setFormulario] = useState({
-        postal: '',
-        ciudad: ''
-    });
-
-    const handleChange = ({target}: ChangeEvent<HTMLInputElement>) => { // este es el tipo que llevan los eventos change (inputs, selects...)
-        const {name, value} = target
-
-        setFormulario({
-            ...formulario,
-            [name]: value
-        })
-    }
-
-    // misma función que handleChange pero sin desestructurar objetos
-    // const handleChange = (ev: ChangeEvent<HTMLInputElement>) => {
-        
-    //     setFormulario({
-    //         ...formulario,
-    //         [ev.target.name]: ev.target.value
-    //     })
-    // }
+    const {formulario, handleChange} = useForm({
+        postal: '11659',
+        ciudad: 'Poliche'
+    })
 
     return (
         <form autoComplete="off">
@@ -33,6 +15,7 @@ export const Formulario = () => {
                     type="text"
                     className="form-control"
                     name="postal"
+                    value={formulario.postal}
                     onChange={handleChange} // TIP esto es lo mismo que "(ev) => handleChange(ev)". Si se toma un argumento (ev) y se le manda a una función que está interna (como es el caso) se pueden obviar los argumentos
                 />
             </div>
@@ -43,6 +26,7 @@ export const Formulario = () => {
                     type="text"
                     className="form-control"
                     name="ciudad"
+                    value={formulario.ciudad}
                     onChange={handleChange}
                 />
             </div>
